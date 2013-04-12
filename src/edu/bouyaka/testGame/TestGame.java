@@ -87,6 +87,34 @@ public class TestGame {
 		engine.Player(1).setLeftKey(37);
 		engine.Player(1).setRightKey(39);
 
+		engine.setInterfaceAmount(2);
+		engine.addInterface(1);
+		engine.addButton(3);
+		engine.Button(3).replaceText("Jouer");
+		engine.Button(3).enabled = true;
+		engine.addButton(4);
+		engine.Button(4).replaceText("Quitter");
+		engine.Button(4).enabled = true;
+		engine.Button(3).setPos(engine.displayWidth / 2,
+				engine.displayHeight / 2);
+		engine.Button(4).setPos(engine.displayWidth / 2,
+				engine.displayHeight / 2 - 32);
+
+		engine.Button(3).setSize(engine.displayWidth / 25,
+				engine.displayHeight / 45);
+		engine.Button(3).setColor(new Color(0, 0, 0, 255));
+		engine.Button(3).setTextColor(new Color(0, 255, 0, 255));
+		engine.Button(3).setTextSize(engine.displayHeight / 60);
+		engine.Button(4).setSize(engine.displayWidth / 25,
+				engine.displayHeight / 45);
+		engine.Button(4).setColor(new Color(0, 0, 0, 255));
+		engine.Button(4).setTextColor(new Color(0, 255, 0, 255));
+		engine.Button(4).setTextSize(engine.displayHeight / 60);
+
+		engine.Interface(1).addButton(engine.Button(3), 0);
+		engine.Interface(1).addButton(engine.Button(4), 1);
+		engine.Interface(1).enabled = true;
+
 		// G�neration et Positionnement al�atoire des entit�es de test
 		for (int id = 0; id < engine.npcAmount; id++) {
 			engine.addNpc(id);
@@ -100,7 +128,7 @@ public class TestGame {
 		}
 
 		engine.start();
-		while (true && !engine.keyboard[27]) {
+		while (true && !engine.keyboard.keyP(27)) {
 			engine.Button(1).replaceText(String.valueOf(engine.shownFps));
 			engine.update();
 		}
