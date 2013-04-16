@@ -1,8 +1,8 @@
 package edu.bouyaka.testGame;
 
-import java.awt.Color;
-
-import edu.bouyaka.engine.Gengine;
+import edu.bouyaka.engine.*;
+import edu.bouyaka.engine.concreted.*;
+import edu.bouyaka.engine.abstracted.*;
 
 public class TestGame {
 
@@ -30,15 +30,14 @@ public class TestGame {
 
 		// Crï¿½ation d'un bouton affichant la console
 		engine.addButton(0);
+		TextBox console = new TextBox();
+		engine.replaceButton(0, console);
 		engine.Button(0).enabled = true;
 		engine.Button(0).setRPos(engine.displayWidth / 2,
 				engine.displayHeight - engine.displayHeight / 90);
 		engine.Button(0)
 				.setSize(engine.displayWidth, engine.displayHeight / 45);
-		engine.Button(0).setColor(new Color(0, 0, 0, 255));
-		engine.Button(0).setTextColor(new Color(0, 255, 0, 255));
-		engine.Button(0).replaceText("Console initialisïée");
-		engine.Button(0).setTextSize(engine.displayHeight / 60);
+		engine.Button(0).replaceText("Console initialisée");
 		engine.Interface(0).addButton(engine.Button(0), 0);
 
 		// Crï¿½ation d'un bouton affichant les fps
@@ -48,22 +47,17 @@ public class TestGame {
 				engine.displayHeight / 90);
 		engine.Button(1).setSize(engine.displayWidth / 45,
 				engine.displayHeight / 45);
-		engine.Button(1).setColor(new Color(0, 0, 0, 255));
-		engine.Button(1).setTextColor(new Color(0, 255, 0, 255));
-		engine.Button(1).setTextSize(engine.displayHeight / 60);
 		engine.Interface(0).addButton(engine.Button(1), 1);
 
 		// Crï¿½ation d'un bouton affichant la rï¿½vision du moteur/jeu
 		engine.addButton(2);
 		engine.Button(2).enabled = true;
 		engine.Button(2).setRPos(
-				engine.displayWidth - engine.displayWidth / 50, engine.displayHeight / 90);
+				engine.displayWidth - engine.displayWidth / 50,
+				engine.displayHeight / 90);
 		engine.Button(2).setSize(engine.displayWidth / 25,
 				engine.displayHeight / 45);
-		engine.Button(2).setColor(new Color(0, 0, 0, 255));
-		engine.Button(2).setTextColor(new Color(0, 255, 0, 255));
 		engine.Button(2).replaceText(engine.rev);
-		engine.Button(2).setTextSize(engine.displayHeight / 60);
 		engine.Interface(0).addButton(engine.Button(2), 2);
 
 		// Gï¿½nï¿½ration de l'entitï¿½ reprï¿½sentant le joueur 1
@@ -105,14 +99,8 @@ public class TestGame {
 
 		engine.Button(3).setSize(engine.displayWidth / 25,
 				engine.displayHeight / 45);
-		engine.Button(3).setColor(new Color(0, 0, 0, 255));
-		engine.Button(3).setTextColor(new Color(0, 255, 0, 255));
-		engine.Button(3).setTextSize(engine.displayHeight / 60);
 		engine.Button(4).setSize(engine.displayWidth / 25,
 				engine.displayHeight / 45);
-		engine.Button(4).setColor(new Color(0, 0, 0, 255));
-		engine.Button(4).setTextColor(new Color(0, 255, 0, 255));
-		engine.Button(4).setTextSize(engine.displayHeight / 60);
 
 		engine.Interface(1).addButton(engine.Button(3), 0);
 		engine.Interface(1).addButton(engine.Button(4), 1);

@@ -1,8 +1,8 @@
 package edu.bouyaka.testGame;
 
-import edu.bouyaka.engine.Assembly;
-import edu.bouyaka.engine.Vector;
-import edu.bouyaka.engine.Item;
+import edu.bouyaka.engine.concreted.Assembly;
+import edu.bouyaka.engine.abstracted.Vector;
+import edu.bouyaka.engine.concreted.Item;
 
 public class Batiment extends Assembly {
 

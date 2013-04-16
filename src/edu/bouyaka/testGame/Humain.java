@@ -1,20 +1,17 @@
 package edu.bouyaka.testGame;
 
 import edu.bouyaka.engine.Concrete;
-import edu.bouyaka.engine.Player;
+import edu.bouyaka.engine.concreted.Player;
 
-public class Humain extends Player{
-	public Humain(){
+public class Humain extends Player {
+	public Humain() {
 		super();
-		type="humain";
+		type = "humain";
 	}
-	
-	
-	public void collideTo(Concrete E){
-		if(E.getType()=="ombre"){
-			
-			
-			
+
+	public void collideTo(Concrete E) {
+		if (E.getType() == "ombre") {
+
 			if (getY() - E.getY() > 0 && getX() - E.getX() < 0) {
 				moveLeft(2);
 				moveDown(2);
