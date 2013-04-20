@@ -13,7 +13,7 @@ public class TestGame {
 		engine = new Gengine();
 
 		/*
-		 * Initialisation et configuration des diffï¿½rents objets de base
+		 * Initialisation et configuration des différents objets de base
 		 */
 
 		// Chargement des fichiers de configuration
@@ -24,46 +24,55 @@ public class TestGame {
 		basic.load();
 		spritesId.load();
 
-		// Crï¿½ation d'une interface
+		// Création d'une interface affichant les informations importantes pour
+		// le développement
 		engine.addInterface(0);
-		engine.Interface(0).enabled = true;
+		Interface devInterface = new Interface();
+		engine.replaceInterface(0, devInterface);
+		devInterface.enable(true);
+		devInterface.setVisible(true);
 
-		// Crï¿½ation d'un bouton affichant la console
+		// Création d'un bouton affichant la console
 		engine.addButton(0);
 		TextBox console = new TextBox();
 		engine.replaceButton(0, console);
-		engine.Button(0).enabled = true;
-		engine.Button(0).setRPos(engine.displayWidth / 2,
-				engine.displayHeight - engine.displayHeight / 90);
+		engine.Button(0).enable(true);
+		engine.Button(0).setVisible(true);
+		engine.Button(0).pos.setR(engine.displayWidth / 2, engine.displayHeight
+				- engine.displayHeight / 90);
 		engine.Button(0)
 				.setSize(engine.displayWidth, engine.displayHeight / 45);
 		engine.Button(0).replaceText("Console initialisée");
-		engine.Interface(0).addButton(engine.Button(0), 0);
+		devInterface.addButton(engine.Button(0), 0);
 
-		// Crï¿½ation d'un bouton affichant les fps
+		// Création d'un bouton affichant les fps
 		engine.addButton(1);
-		engine.Button(1).enabled = true;
-		engine.Button(1).setRPos(engine.displayWidth / 90,
+		engine.Button(1).enable(true);
+		engine.Button(1).setVisible(true);
+		engine.Button(1).pos.setR(engine.displayWidth / 90,
 				engine.displayHeight / 90);
 		engine.Button(1).setSize(engine.displayWidth / 45,
 				engine.displayHeight / 45);
-		engine.Interface(0).addButton(engine.Button(1), 1);
+		devInterface.addButton(engine.Button(1), 1);
 
-		// Crï¿½ation d'un bouton affichant la rï¿½vision du moteur/jeu
+		// Création d'un bouton affichant la révision du moteur/jeu
 		engine.addButton(2);
-		engine.Button(2).enabled = true;
-		engine.Button(2).setRPos(
-				engine.displayWidth - engine.displayWidth / 50,
-				engine.displayHeight / 90);
+		engine.Button(2).enable(true);
+		engine.Button(2).setVisible(true);
+		engine.Button(2).pos.setR(engine.displayWidth - engine.displayWidth
+				/ 50, engine.displayHeight / 90);
 		engine.Button(2).setSize(engine.displayWidth / 25,
 				engine.displayHeight / 45);
 		engine.Button(2).replaceText(engine.rev);
-		engine.Interface(0).addButton(engine.Button(2), 2);
+		devInterface.addButton(engine.Button(2), 2);
 
-		// Gï¿½nï¿½ration de l'entitï¿½ reprï¿½sentant le joueur 1
+		// Création de l'entité représentant le joueur 1
 		engine.addPlayer(0);
-		engine.Player(0).enabled = true;
-		engine.Player(0).setRPos((int) (Math.random() * engine.displayWidth),
+		Monstre pirate = new Monstre();
+		engine.replacePlayer(0, pirate);
+		engine.Player(0).enable(true);
+		engine.Player(0).setVisible(true);
+		engine.Player(0).pos.setR((int) (Math.random() * engine.displayWidth),
 				(int) (Math.random() * engine.displayHeight));
 		engine.Player(0).setSpriteId(0);
 		engine.Player(0).setUpKey(90);
@@ -71,10 +80,11 @@ public class TestGame {
 		engine.Player(0).setLeftKey(81);
 		engine.Player(0).setRightKey(68);
 
-		// Gï¿½nï¿½ration de l'entitï¿½ reprï¿½sentant le joueur 2
+		// Création de l'entité représentant le joueur 2
 		engine.addPlayer(1);
-		engine.Player(1).enabled = true;
-		engine.Player(1).setRPos(engine.displayWidth / 2,
+		engine.Player(1).enable(true);
+		engine.Player(1).setVisible(true);
+		engine.Player(1).pos.setR(engine.displayWidth / 2,
 				engine.displayHeight / 2);
 		engine.Player(1).setSpriteId(1);
 		engine.Player(1).setUpKey(38);
@@ -82,48 +92,107 @@ public class TestGame {
 		engine.Player(1).setLeftKey(37);
 		engine.Player(1).setRightKey(39);
 
+		// Génération de murs d'ombre
+		engine.addItem(0);
+		Ombre mur1 = new Ombre();
+		engine.replaceItem(0, mur1);
+		mur1.setSpriteId(8);
+		mur1.getPos().set(10, 6);
+		mur1.enable(true);
+		mur1.setVisible(true);
+
+		engine.addItem(1);
+		Ombre mur2 = new Ombre();
+		engine.replaceItem(1, mur2);
+		mur2.setSpriteId(8);
+		mur2.getPos().set(10, 9);
+		mur2.enable(true);
+		mur2.setVisible(true);
+
+		engine.addItem(2);
+		Ombre mur3 = new Ombre();
+		engine.replaceItem(2, mur3);
+		mur3.setSpriteId(8);
+		mur3.getPos().set(12, 6);
+		mur3.enable(true);
+		mur3.setVisible(true);
+
+		engine.addItem(3);
+		Ombre mur4 = new Ombre();
+		engine.replaceItem(3, mur4);
+		mur4.setSpriteId(8);
+		mur4.getPos().set(12, 9);
+		mur4.enable(true);
+		mur4.setVisible(true);
+
+		// Création de l'interface du menu de jeu
 		engine.setInterfaceAmount(2);
 		engine.addInterface(1);
+		Interface menu = new Interface();
+		engine.replaceInterface(1, menu);
+
+		// Création d'un bouton Permettant de quitter le jeu
 		engine.addButton(3);
-		engine.Button(3).replaceText("Quitter");
-		engine.Button(3).enabled = true;
-		engine.addButton(4);
-		engine.Button(4).replaceText("Jouer");
-		engine.Button(4).enabled = true;
-		engine.Button(3).setRPos(
-				engine.displayWidth / 2 - engine.displayWidth / 50,
+		QuitButton quitter = new QuitButton();
+		engine.replaceButton(3, quitter);
+		quitter.replaceText("Quitter");
+		quitter.pos.setR(engine.displayWidth / 2 - engine.displayWidth / 50,
 				engine.displayHeight / 2 - engine.displayHeight / 90);
-		engine.Button(4).setRPos(
-				engine.displayWidth / 2 - engine.displayWidth / 50,
+		quitter.setSize(engine.displayWidth / 25, engine.displayHeight / 45);
+		menu.addButton(quitter, 0);
+
+		// Création d'un bouton Permettant de lancer le jeu ou de quitter la
+		// pause
+		engine.addButton(4);
+		PlayButton jouer = new PlayButton();
+		engine.replaceButton(4, jouer);
+		jouer.replaceText("Jouer");
+		jouer.pos.setR(engine.displayWidth / 2 - engine.displayWidth / 50,
 				engine.displayHeight / 2 - 32 - engine.displayHeight / 90);
+		jouer.setSize(engine.displayWidth / 25, engine.displayHeight / 45);
+		menu.addButton(jouer, 1);
 
-		engine.Button(3).setSize(engine.displayWidth / 25,
-				engine.displayHeight / 45);
-		engine.Button(4).setSize(engine.displayWidth / 25,
-				engine.displayHeight / 45);
+		menu.enable(true);
 
-		engine.Interface(1).addButton(engine.Button(3), 0);
-		engine.Interface(1).addButton(engine.Button(4), 1);
-		engine.Interface(1).enabled = true;
-
-		// Gï¿½neration et Positionnement alï¿½atoire des entitï¿½es de test
+		// Géneration et Positionnement aléatoire des entitées de test
 		for (int id = 0; id < engine.npcAmount; id++) {
 			engine.addNpc(id);
-			engine.Npc(id).enabled = true;
+			engine.Npc(id).enable(true);
+			engine.Npc(id).setVisible(true);
 
-			engine.Npc(id).setRPos(Math.random() * engine.screenWidth,
+			engine.Npc(id).pos.setR(Math.random() * engine.screenWidth,
 					Math.random() * engine.screenHeight);
 
 			engine.Npc(id).setSpriteId(2);
 
 		}
 
+		// Définition de la représentation du curseur par défaut et du curseur
+		// de click
+		engine.cursor.setCursorSprite(engine.Sprite(6));
+		engine.cursor.setClickSprite(engine.Sprite(7));
+
+		// Création d'un délai éliminant des erreurs dans l'activation du menu
+		// de jeu
+		Timer pauseDelay = new Timer();
+		pauseDelay.setDelay((long) 2.5E8);
+
+		// Lancement du moteur
 		engine.start();
-		engine.display.setCursor(engine.Sprite(6));
-		while (true && !engine.keyboard.keyP(27)) {
+		while (true) {
+			if (engine.keyboard.keyP(27) && pauseDelay.ended()) {
+				pauseDelay.start();
+				if (engine.state == "paused") {
+					engine.state = "resume";
+				} else {
+					engine.state = "paused";
+				}
+
+				menu.enable(true);
+				menu.setVisible(true);
+			}
 			engine.Button(1).replaceText(String.valueOf(engine.shownFps));
 			engine.update();
 		}
-		System.exit(0);
 	}
 }

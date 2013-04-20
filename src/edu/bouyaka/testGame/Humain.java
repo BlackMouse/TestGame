@@ -12,19 +12,22 @@ public class Humain extends Player {
 	public void collideTo(Concrete E) {
 		if (E.getType() == "ombre") {
 
-			if (getY() - E.getY() > 0 && getX() - E.getX() < 0) {
+			if (pos.getY() - E.pos.getY() > 0 && pos.getX() - E.pos.getX() < 0) {
 				moveLeft(2);
 				moveDown(2);
 
-			} else if (getY() - E.getY() > 0 && getX() - E.getX() > 0) {
+			} else if (pos.getY() - E.pos.getY() > 0
+					&& pos.getX() - E.pos.getX() > 0) {
 				moveRight(2);
 				moveDown(2);
 
-			} else if (getY() - E.getY() < 0 && getX() - E.getX() < 0) {
+			} else if (pos.getY() - E.pos.getY() < 0
+					&& pos.getX() - E.pos.getX() < 0) {
 				moveLeft(2);
 				moveUp(2);
 
-			} else if (getY() - E.getY() < 0 && getX() - E.getX() > 0) {
+			} else if (pos.getY() - E.pos.getY() < 0
+					&& pos.getX() - E.pos.getX() > 0) {
 				moveRight(2);
 				moveUp(2);
 
