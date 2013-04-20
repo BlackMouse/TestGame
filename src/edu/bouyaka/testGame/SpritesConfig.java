@@ -25,6 +25,7 @@ public class SpritesConfig extends Config {
 						.parseInt(read("Sprite_" + n + "NF")), Integer
 						.parseInt(read("Sprite_" + n + "FR")));
 
+				if(Boolean.parseBoolean(read("Sprite_" + n + "resize")))
 				engine.Sprite(n).scale((int) engine.vRef.getX(),
 						(int) engine.vRef.getX(), "proportionnal");
 

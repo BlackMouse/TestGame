@@ -68,6 +68,7 @@ public class TestGame {
 
 		// Création de l'entité représentant le joueur 1
 		engine.addPlayer(0);
+		engine.heightManager.setHeight(0, "Player", 0);
 		Monstre pirate = new Monstre();
 		engine.replacePlayer(0, pirate);
 		engine.Player(0).enable(true);
@@ -82,6 +83,7 @@ public class TestGame {
 
 		// Création de l'entité représentant le joueur 2
 		engine.addPlayer(1);
+		engine.heightManager.setHeight(0, "Player", 1);
 		engine.Player(1).enable(true);
 		engine.Player(1).setVisible(true);
 		engine.Player(1).pos.setR(engine.displayWidth / 2,
@@ -152,7 +154,18 @@ public class TestGame {
 		jouer.setSize(engine.displayWidth / 25, engine.displayHeight / 45);
 		menu.addButton(jouer, 1);
 
-		menu.enable(true);
+		// Création d'un bouton pour tester l'utilisation de boutons représentés
+		// par des images
+		engine.addButton(5);
+		SpriteButton dah = new SpriteButton();
+		engine.replaceButton(5, dah);
+		dah.pos.setR(engine.displayWidth / 2 - engine.displayWidth / 50,
+				engine.displayHeight / 2 - 64 - engine.displayHeight / 90);
+		dah.setSpriteId(9);
+		menu.addButton(dah, 2);
+
+		menu.enable(false);
+		menu.setVisible(false);
 
 		// Géneration et Positionnement aléatoire des entitées de test
 		for (int id = 0; id < engine.npcAmount; id++) {
@@ -182,14 +195,15 @@ public class TestGame {
 		while (true) {
 			if (engine.keyboard.keyP(27) && pauseDelay.ended()) {
 				pauseDelay.start();
-				if (engine.state == "paused") {
-					engine.state = "resume";
+				if (engine.state == "Pause") {
+					engine.state = "Resume";
 				} else {
-					engine.state = "paused";
+					engine.state = "Pause";
 				}
 
-				menu.enable(true);
-				menu.setVisible(true);
+				menu.enable(!menu.isEnabled());
+				menu.setVisible(!menu.isVisible());
+				engine.heightManager.setHeight(0, "Interface", 1);
 			}
 			engine.Button(1).replaceText(String.valueOf(engine.shownFps));
 			engine.update();
