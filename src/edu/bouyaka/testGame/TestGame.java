@@ -13,7 +13,7 @@ public class TestGame {
 		engine = new Gengine();
 
 		/*
-		 * Initialisation et configuration des différents objets de base
+		 * Initialisation et configuration des diffï¿½rents objets de base
 		 */
 
 		// Chargement des fichiers de configuration
@@ -24,15 +24,15 @@ public class TestGame {
 		basic.load();
 		spritesId.load();
 
-		// Création d'une interface affichant les informations importantes pour
-		// le développement
+		// Crï¿½ation d'une interface affichant les informations importantes pour
+		// le dï¿½veloppement
 		engine.addInterface(0);
 		Interface devInterface = new Interface();
 		engine.replaceInterface(0, devInterface);
 		devInterface.enable(true);
 		devInterface.setVisible(true);
 
-		// Création d'un bouton affichant la console
+		// Crï¿½ation d'un bouton affichant la console
 		engine.addButton(0);
 		TextBox console = new TextBox();
 		engine.replaceButton(0, console);
@@ -42,10 +42,10 @@ public class TestGame {
 				- engine.displayHeight / 90);
 		engine.Button(0)
 				.setSize(engine.displayWidth, engine.displayHeight / 45);
-		engine.Button(0).replaceText("Console initialisée");
+		engine.Button(0).replaceText("Console initialisï¿½e");
 		devInterface.addButton(engine.Button(0), 0);
 
-		// Création d'un bouton affichant les fps
+		// Crï¿½ation d'un bouton affichant les fps
 		engine.addButton(1);
 		engine.Button(1).enable(true);
 		engine.Button(1).setVisible(true);
@@ -55,7 +55,7 @@ public class TestGame {
 				engine.displayHeight / 45);
 		devInterface.addButton(engine.Button(1), 1);
 
-		// Création d'un bouton affichant la révision du moteur/jeu
+		// Crï¿½ation d'un bouton affichant la rï¿½vision du moteur/jeu
 		engine.addButton(2);
 		engine.Button(2).enable(true);
 		engine.Button(2).setVisible(true);
@@ -66,7 +66,7 @@ public class TestGame {
 		engine.Button(2).replaceText(engine.rev);
 		devInterface.addButton(engine.Button(2), 2);
 
-		// Création de l'entité représentant le joueur 1
+		// Crï¿½ation de l'entitï¿½ reprï¿½sentant le joueur 1
 		engine.addPlayer(0);
 		engine.heightManager.setHeight(0, "Player", 0);
 		Monstre pirate = new Monstre();
@@ -75,30 +75,30 @@ public class TestGame {
 		engine.Player(0).setVisible(true);
 		engine.Player(0).pos.setR((int) (Math.random() * engine.displayWidth),
 				(int) (Math.random() * engine.displayHeight));
-		engine.Player(0).setSpriteId(0);
+		engine.Player(0).setSprite(engine.Sprite(0));
 		engine.Player(0).setUpKey(90);
 		engine.Player(0).setDownKey(83);
 		engine.Player(0).setLeftKey(81);
 		engine.Player(0).setRightKey(68);
 
-		// Création de l'entité représentant le joueur 2
+		// Crï¿½ation de l'entitï¿½ reprï¿½sentant le joueur 2
 		engine.addPlayer(1);
 		engine.heightManager.setHeight(0, "Player", 1);
 		engine.Player(1).enable(true);
 		engine.Player(1).setVisible(true);
 		engine.Player(1).pos.setR(engine.displayWidth / 2,
 				engine.displayHeight / 2);
-		engine.Player(1).setSpriteId(1);
+		engine.Player(1).setSprite(engine.Sprite(1));
 		engine.Player(1).setUpKey(38);
 		engine.Player(1).setDownKey(40);
 		engine.Player(1).setLeftKey(37);
 		engine.Player(1).setRightKey(39);
 
-		// Génération de murs d'ombre
+		// Gï¿½nï¿½ration de murs d'ombre
 		engine.addItem(0);
 		Ombre mur1 = new Ombre();
 		engine.replaceItem(0, mur1);
-		mur1.setSpriteId(8);
+		mur1.setSprite(engine.Sprite(8));
 		mur1.getPos().set(10, 6);
 		mur1.enable(true);
 		mur1.setVisible(true);
@@ -106,7 +106,7 @@ public class TestGame {
 		engine.addItem(1);
 		Ombre mur2 = new Ombre();
 		engine.replaceItem(1, mur2);
-		mur2.setSpriteId(8);
+		mur2.setSprite(engine.Sprite(8));
 		mur2.getPos().set(10, 9);
 		mur2.enable(true);
 		mur2.setVisible(true);
@@ -114,7 +114,7 @@ public class TestGame {
 		engine.addItem(2);
 		Ombre mur3 = new Ombre();
 		engine.replaceItem(2, mur3);
-		mur3.setSpriteId(8);
+		mur3.setSprite(engine.Sprite(8));
 		mur3.getPos().set(12, 6);
 		mur3.enable(true);
 		mur3.setVisible(true);
@@ -122,18 +122,18 @@ public class TestGame {
 		engine.addItem(3);
 		Ombre mur4 = new Ombre();
 		engine.replaceItem(3, mur4);
-		mur4.setSpriteId(8);
+		mur4.setSprite(engine.Sprite(8));
 		mur4.getPos().set(12, 9);
 		mur4.enable(true);
 		mur4.setVisible(true);
 
-		// Création de l'interface du menu de jeu
+		// Crï¿½ation de l'interface du menu de jeu
 		engine.setInterfaceAmount(2);
 		engine.addInterface(1);
 		Interface menu = new Interface();
 		engine.replaceInterface(1, menu);
 
-		// Création d'un bouton Permettant de quitter le jeu
+		// Crï¿½ation d'un bouton Permettant de quitter le jeu
 		engine.addButton(3);
 		QuitButton quitter = new QuitButton();
 		engine.replaceButton(3, quitter);
@@ -143,7 +143,7 @@ public class TestGame {
 		quitter.setSize(engine.displayWidth / 25, engine.displayHeight / 45);
 		menu.addButton(quitter, 0);
 
-		// Création d'un bouton Permettant de lancer le jeu ou de quitter la
+		// Crï¿½ation d'un bouton Permettant de lancer le jeu ou de quitter la
 		// pause
 		engine.addButton(4);
 		PlayButton jouer = new PlayButton();
@@ -154,20 +154,20 @@ public class TestGame {
 		jouer.setSize(engine.displayWidth / 25, engine.displayHeight / 45);
 		menu.addButton(jouer, 1);
 
-		// Création d'un bouton pour tester l'utilisation de boutons représentés
+		// Crï¿½ation d'un bouton pour tester l'utilisation de boutons reprï¿½sentï¿½s
 		// par des images
 		engine.addButton(5);
 		SpriteButton dah = new SpriteButton();
 		engine.replaceButton(5, dah);
 		dah.pos.setR(engine.displayWidth / 2 - engine.displayWidth / 50,
 				engine.displayHeight / 2 - 64 - engine.displayHeight / 90);
-		dah.setSpriteId(9);
+		dah.setSprite(engine.Sprite(9));
 		menu.addButton(dah, 2);
 
 		menu.enable(false);
 		menu.setVisible(false);
 
-		// Géneration et Positionnement aléatoire des entitées de test
+		// Gï¿½neration et Positionnement alï¿½atoire des entitï¿½es de test
 		for (int id = 0; id < engine.npcAmount; id++) {
 			engine.addNpc(id);
 			engine.Npc(id).enable(true);
@@ -176,16 +176,16 @@ public class TestGame {
 			engine.Npc(id).pos.setR(Math.random() * engine.screenWidth,
 					Math.random() * engine.screenHeight);
 
-			engine.Npc(id).setSpriteId(2);
+			engine.Npc(id).setSprite(engine.Sprite(2));
 
 		}
 
-		// Définition de la représentation du curseur par défaut et du curseur
+		// Dï¿½finition de la reprï¿½sentation du curseur par dï¿½faut et du curseur
 		// de click
 		engine.cursor.setCursorSprite(engine.Sprite(6));
 		engine.cursor.setClickSprite(engine.Sprite(7));
 
-		// Création d'un délai éliminant des erreurs dans l'activation du menu
+		// Crï¿½ation d'un dï¿½lai ï¿½liminant des erreurs dans l'activation du menu
 		// de jeu
 		Timer pauseDelay = new Timer();
 		pauseDelay.setDelay((long) 2.5E8);
