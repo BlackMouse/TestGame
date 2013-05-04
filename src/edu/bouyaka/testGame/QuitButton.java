@@ -1,10 +1,10 @@
 package edu.bouyaka.testGame;
 
-import edu.bouyaka.engine.concreted.Button;
+import edu.bouyaka.engine.concreted.SpriteButton;
 
-public class QuitButton extends Button {
+public class QuitButton extends SpriteButton {
 	public void leftClick(int x, int y) {
-		engine.state = "quitted";
+		engine.state = "Quit";
 		System.exit(0);
 	}
 

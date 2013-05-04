@@ -14,6 +14,7 @@ public class SysConfig extends Config {
 			engine.displayWidth = Integer.parseInt(read("displayWidth"));
 			engine.displayHeight = Integer.parseInt(read("displayHeight"));
 			engine.fullScreen = Boolean.parseBoolean(read("fullScreen"));
+			engine.devMode = Boolean.parseBoolean(read("devMode"));
 			if (engine.fullScreen) {
 				engine.displayWidth = engine.screenWidth;
 				engine.displayHeight = engine.screenHeight;
